@@ -21,8 +21,13 @@ const (
 //Init ...
 func Init() sessions.RedisStore {
 
-	//connect to reddis
-	s, err := sessions.NewRedisStore(10, "tcp", sessHost+":6379", "", []byte("secret"))
+	//connect to redis
+    u, err := url.Parse(os.Getenv("REDIS_URL"))
+    if err != nil {
+        panic(err)
+    }
+    
+	s, err := sessions.NewRedisStore(10, "tcp", u.Host(), u.User.Password(), []byte("secret"))
 	core.CheckErr(err, "Cannot connect to RedisStore")
 
 	//save connection
