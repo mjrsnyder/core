@@ -1,6 +1,8 @@
 package sess
 
 import (
+    "os"
+    "net/url"
 	"github.com/vodstv/core"
 
 	"github.com/gin-gonic/contrib/sessions"
