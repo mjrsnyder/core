@@ -30,14 +30,13 @@ func Init() sessions.RedisStore {
     }
     // extract things from the parsed url
     host := u.Host
-    password, err := u.User.Password()
-    
-    if err != nil {
-        return nil, err
-    }
+    fmt.Println(host)
+    fmt.Println(u.User)
+    p, _ := u.User.Password()
+    fmt.Println(p)
 
     
-	s, err := sessions.NewRedisStore(10, "tcp", host, password, []byte("secret"))
+	s, err := sessions.NewRedisStore(10, "tcp", host, p, []byte("secret"))
 	core.CheckErr(err, "Cannot connect to RedisStore")
 
 	//save connection
