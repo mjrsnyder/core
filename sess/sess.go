@@ -29,7 +29,7 @@ func Init() sessions.RedisStore {
         panic(err)
     }
     // extract things from the parsed url
-    host, _ := u.Host
+    host := u.Host
     password, _ := u.User.Password()
 
     
