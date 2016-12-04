@@ -30,7 +30,11 @@ func Init() sessions.RedisStore {
     }
     // extract things from the parsed url
     host := u.Host
-    password, _ := u.User.Password()
+    password, err := u.User.Password()
+    
+    if err != nil {
+        return nil, err
+    }
 
     
 	s, err := sessions.NewRedisStore(10, "tcp", host, password, []byte("secret"))
