@@ -2,7 +2,6 @@ package sess
 
 import (
     "os"
-    "fmt"
     "net/url"
 	"github.com/vodstv/core"
 
